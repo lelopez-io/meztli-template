@@ -39,11 +39,11 @@
     "superjson": "2.2.1"
   },
   "devDependencies": {
-    "@acme/api": "workspace:*",
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@acme/api": "*",
+    "@acme/eslint-config": "*",
+    "@acme/prettier-config": "*",
+    "@acme/tailwind-config": "*",
+    "@acme/tsconfig": "*",
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "@babel/runtime": "^7.24.4",

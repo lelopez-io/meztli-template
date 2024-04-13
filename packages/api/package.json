@@ -19,17 +19,17 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
-    "@acme/validators": "workspace:*",
+    "@acme/auth": "*",
+    "@acme/db": "*",
+    "@acme/validators": "*",
     "@trpc/server": "11.0.0-rc.334",
     "superjson": "2.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@acme/eslint-config": "*",
+    "@acme/prettier-config": "*",
+    "@acme/tsconfig": "*",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"

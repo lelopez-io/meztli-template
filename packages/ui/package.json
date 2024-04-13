@@ -30,10 +30,10 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@acme/eslint-config": "*",
+    "@acme/prettier-config": "*",
+    "@acme/tailwind-config": "*",
+    "@acme/tsconfig": "*",
     "@types/react": "^18.2.77",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",

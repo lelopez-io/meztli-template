@@ -14,10 +14,10 @@
     "@auth/core": "0.28.1"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@acme/eslint-config": "*",
+    "@acme/prettier-config": "*",
+    "@acme/tailwind-config": "*",
+    "@acme/tsconfig": "*",
     "@types/node": "^20.12.5",
     "eslint": "^9.0.0",
     "h3": "^1.11.1",
