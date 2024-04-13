@@ -2,7 +2,7 @@ import type { Config } from "drizzle-kit";
 import { createEnv } from "@t3-oss/env-core";
 import * as z from "zod";
 
-const env = createEnv({
+export const env = createEnv({
   server: {
     DB_HOST: z.string(),
     DB_NAME: z.string(),
@@ -17,7 +17,7 @@ const env = createEnv({
 export const connectionStr = new URL(`mysql://${env.DB_HOST}/${env.DB_NAME}`);
 connectionStr.username = env.DB_USERNAME;
 connectionStr.password = env.DB_PASSWORD;
-connectionStr.searchParams.set("ssl", '{"rejectUnauthorized":true}');
+connectionStr.searchParams.set("ssl", '{"rejectUnauthorized":false}');
 
 export default {
   schema: "./src/schema",

@@ -1,0 +1,70 @@
+version: "3.3"
+
+services:
+  minio:
+    image: "minio/minio:latest"
+    container_name: meztli-s3
+    command: minio server /data/minio --console-address ":9090"
+    ports:
+      - "9000:9000"
+      - "9090:9090"
+    environment:
+      MINIO_ROOT_USER: "${S3_USERNAME}"
+      MINIO_ROOT_PASSWORD: "${S3_PASSWORD}"
+    volumes:
+      - meztli-s3:/data/minio
+    networks:
+      - meztli-net
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+  minio-mc:
+    image: "minio/mc:latest"
+    container_name: meztli-mc
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://meztli-s3:9000 ${S3_USERNAME} ${S3_PASSWORD};
+      /usr/bin/mc mb myminio/${S3_BUCKET};
+      /usr/bin/mc anonymous set public myminio/${S3_BUCKET};
+      "
+    networks:
+      - meztli-net
+  db:
+    image: mysql:8
+    container_name: meztli-db
+    command: --default-authentication-plugin=caching_sha2_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - "3306:3306"
+      - "33060:33060"
+    expose:
+      # Opens port 3306 on the container
+      - "3306"
+    # Where our data will be persisted
+    working_dir: /var/lib/mysql
+    volumes:
+      - meztli-db:/var/lib/mysql:rw
+    networks:
+      - meztli-net
+# Names our volume
+volumes:
+  meztli-db:
+    name: meztli-db
+  meztli-s3:
+    name: meztli-s3
+# Network so we can attach api-container separately
+networks:
+  meztli-net:
+    name: meztli-net
+    driver: bridge

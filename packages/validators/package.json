@@ -1,5 +1,5 @@
 {
-  "name": "@acme/validators",
+  "name": "@meztli/validators",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -22,12 +22,12 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "*",
-    "@acme/prettier-config": "*",
-    "@acme/tsconfig": "*",
+    "@meztli/eslint-config": "*",
+    "@meztli/prettier-config": "*",
+    "@meztli/tsconfig": "*",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@meztli/prettier-config"
 }
